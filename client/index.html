@@ -3,16 +3,36 @@
   <head>
     <meta charset="utf-8" />
     <title>Shortly</title>
-    <link rel="stylesheet" type="text/css" href="styles/style.css" />
+    <!-- Angular Material CSS now available via Google CDN; version 0.8 used here -->
+    <link rel="stylesheet" href="lib/angular-material/angular-material.min.css">
+    <!-- <link rel="stylesheet" type="text/css" href="styles/style.css" /> -->
   </head>
-  <body>
-    <h1>Shortly</h1>
+  <body ng-controller="AppController">
+    <div layout="column" layout-fill>
+      <md-toolbar class="md-primary">
+        <div class="md-toolbar-tools">
+          <span>My App's Title</span>
+          <!-- fill up the space between left and right area -->
+          <span flex></span>
+          <md-button ng-show='loggedIn' ng-click='signOut()'>Sign Out</md-button>
+        </div>
+      </md-toolbar>
+      <md-content>
+      </md-content>
+      <div ng-view></div>
+    </div>
 
     <!-- the ng-view directive is where our templates will be loaded into when naviagted to -->
-    <div ng-view></div>
 
     <script src="lib/angular/angular.js"></script>
     <script src="lib/angular-route/angular-route.js"></script>
+
+    <!-- Angular Material Dependencies -->
+    <script src="lib/angular-animate/angular-animate.min.js"></script>
+    <script src="lib/angular-aria/angular-aria.min.js"></script>
+
+    <!-- Angular Material Javascript now available via Google CDN; version 0.8 used here -->
+    <script src="lib/angular-material/angular-material.min.js"></script>
 
     <script src="app/auth/auth.js"></script>
     <script src="app/links/links.js"></script>
