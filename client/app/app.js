@@ -10,7 +10,8 @@ angular.module('shortly', [
   $routeProvider
     .when('/signin', {
       templateUrl: 'app/auth/signin.html',
-      controller: 'AuthController'
+      controller: 'AuthController',
+      reloadOnSearch: false
     })
     .when('/signup', {
       templateUrl: 'app/auth/signup.html',
@@ -32,9 +33,9 @@ angular.module('shortly', [
     // of interceptors. Think of it like middleware for your ajax calls
   $httpProvider.interceptors.push('AttachTokens');
 
-  // $mdThemingProvider.theme('default')
-  //     .primaryPalette('pink')
-  //     .accentPalette('orange');
+  $mdThemingProvider.theme('default')
+      .primaryPalette('cyan')
+      .accentPalette('indigo');
 })
 .factory('AttachTokens', function ($window) {
   // this is an $httpInterceptor
@@ -63,8 +64,9 @@ angular.module('shortly', [
   // if it's not valid, we then redirect back to signin/signup
   $rootScope.$on('$routeChangeStart', function (evt, next, current) {
     console.log('authentication....')
-    if (next.$$route && next.$$route.authenticate || !Auth.isAuth()) {
+    if (next.$$route && next.$$route.authenticate && !Auth.isAuth()) {
       console.log('redirecting to signin....')
+      // $location.path('/signin');
       $location.path('/signin');
     } else {
       console.log('authenitcated.', Auth.isAuth());
@@ -72,10 +74,16 @@ angular.module('shortly', [
   });
 })
 .controller('AppController', function($scope, $window, $location, Auth){
-  $scope.loggedIn = Auth.isAuth();
+  $scope.loggedIn = Auth.isAuth;
   $scope.signOut = function(){
     $window.localStorage.removeItem('com.shortly');
-    $location.path('/signin');
+    $location.url('/signin');
   }
   console.log('scope logged in: ', $scope.loggedIn);
+
+  $scope.navigate = function(path) {
+    console.log('navigate function to: ', path);
+    $location.url(path);
+  }
+
 })

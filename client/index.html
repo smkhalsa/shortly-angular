@@ -11,10 +11,12 @@
     <div layout="column" layout-fill>
       <md-toolbar class="md-primary">
         <div class="md-toolbar-tools">
-          <span>My App's Title</span>
+          <span>Shortly</span>
+          <md-button ng-show='loggedIn()' ng-click="navigate('/links')">Links</md-button>
+          <md-button ng-show='loggedIn()' ng-click="navigate('/shorten')">Shorten</md-button>
           <!-- fill up the space between left and right area -->
           <span flex></span>
-          <md-button ng-show='loggedIn' ng-click='signOut()'>Sign Out</md-button>
+          <md-button ng-show='loggedIn()' ng-click='signOut()'>Sign Out</md-button>
         </div>
       </md-toolbar>
       <md-content>

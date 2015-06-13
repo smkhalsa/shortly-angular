@@ -1,9 +1,26 @@
-<div id='signup'>
-  <h1>signup</h1>
-  <form name="signupForm" ng-submit='signup()'>
-    <input type='text' ng-model='user.username'>
-    <input type="password" ng-model='user.password'>
-    <button>signup</button>
-  </form>
-  <a href="#/signin">Already have an account? <strong>Signin</strong> ...</a>
+<div id='signup' layout="row" layout-align="center center" layout-margin>
+  <div>
+    <h1 class="md-display-1">Make An Account</h1>
+    <md-content>
+      <form name="signupForm" ng-submit='signup()'>
+        <md-input-container>
+          <label>Username</label>
+          <input type='text' ng-model='user.username' required>
+        </md-input-container>
+        <md-input-container>
+          <label>Password</label>
+          <input type="password" ng-model='user.password' required>
+        </md-input-container>
+          <div role="alert">
+               <span class="error" ng-show="myForm.userName.$error.required">
+                Required!</span>
+          </div>
+          <div layout="row">
+            <md-button class="md-raised md-accent">sign up</md-button>
+            <md-button class="md-default" href="#/signin">Sign into existing account</md-button>
+          </div>
+        </form>
+      </md-input-container>
+    </md-content>
+  </div>
 </div>

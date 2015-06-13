@@ -1,8 +1,19 @@
-<div id='container'>
-<!-- Your code here -->
-  <input ng-model="newLink"/>
-  <button ng-click="addLink(newLink)">Submit</button>
-
+<div id='shorten' layout="row" layout-align="center center" layout-margin>
+  <!-- <div> -->
+    <!-- <h1 class="md-display-4">Shorten Link</h1> -->
+    <md-content>
+      <form name="signinForm" ng-submit="addLink(newLink); newLink=''">
+        <div layout="row">
+          <md-input-container>
+            <label class="md-display-1">Shorten Link</label>
+            <input class="md-display-1" type='text' ng-model='newLink'>
+          </md-input-container>
+          <div layout="row" layout-align="center center">
+          <md-button class="md-raised md-accent">GO</md-button>
+          </div>
+        </div>
+        </form>
+      </md-input-container>
+    </md-content>
+  <!-- </div> -->
 </div>
-
-
