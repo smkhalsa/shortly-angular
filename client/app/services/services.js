@@ -10,7 +10,8 @@ angular.module('shortly.services', [])
   }
 
   Links.addLink = function(link) {
-    return $http.post('/api/links', link);
+    var jsonLink = {url: link}
+    return $http.post('/api/links', JSON.stringify(jsonLink));
   }
 
   return Links;
