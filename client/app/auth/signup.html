@@ -2,7 +2,7 @@
   <div>
     <h1 class="md-display-1">Make An Account</h1>
     <md-content>
-      <form name="signupForm" ng-submit='signup()'>
+      <form name="signupForm" ng-submit='signup()' novalidate>
         <md-input-container>
           <label>Username</label>
           <input type='text' ng-model='user.username' required>

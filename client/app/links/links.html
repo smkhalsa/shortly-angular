@@ -1,17 +1,23 @@
 <div id='container'>
   <!-- Your html here -->
   <div class="links">
+    <div layout="row" layout-align="center start" layout-margin>
+      <md-input-container flex="40">
+        <label>Search</label>
+        <input name="searchInput" type="text" ng-model="search">
+      </md-input-container>
+    </div>
     <div class='heading' layout="row" layout-align="center start" layout-margin>
       <div flex="10" class='md-headline'>Links</div>
       <div flex="30" class='md-headline'>Title</div>
       <div flex="30" class='md-headline'>Url</div>
       <div flex="20" class='md-headline' href='{{base_url}}/{{code}}'>Short Link</div>
     </div>
-    <div class='link' ng-repeat="link in data.links" layout="row" layout-align="center start" layout-margin>
+    <div class='link' ng-repeat="link in data.links | filter:search" layout="row" layout-align="center start" layout-margin>
       <div flex="10" class='md-title'><span class='count'>{{link.visits}}</span> Visits</div>
       <div flex="30" class='md-title'>{{link.title}}</div>
       <div flex="30" class='md-title'>{{link.url}}</div>
-      <a flex="20" href='{{base_url}}/{{code}}'>{{link.base_url}}/{{link.code}}</a>
+      <a flex="20" href="{{link.base_url}}/api/links/{{link.code}}" target="_blank">{{link.base_url}}/{{link.code}}</a>
     </div>
   </div>
 
